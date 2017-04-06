@@ -27,70 +27,80 @@ e.g. Facebook, Google, Twitter etc. Third-party authentication has become very p
 
 ## Data Formats
 
-1. **Entities**:
+**Entities**:
+
     1. AspNetUsers (and other out of the box ASP.Net authentication tables)
-	2. Item (item for sale):
-	    | Column      | Description                                        |
-        |-------------|----------------------------------------------------|
-        | Id          | identifier of the item                             |
-        | Name        | name of the item                                   |
-        | Description | description of the item                            |
-        | Price       | price of the item                                  |
-        | CategoryId  | identifier of the category item belongs to         |
-        | Stock       | current number of this item available for purchase |
+    2. Item (item for sale):
+| Column      | Description                                        |
+|-------------|----------------------------------------------------|
+| Id          | identifier of the item                             |
+| Name        | name of the item                                   |
+| Description | description of the item                            |
+| Price       | price of the item                                  |
+| CategoryId  | identifier of the category item belongs to         |
+| Stock       | current number of this item available for purchase |
     3. Category (category of item, e.g. kitchen, office, etc):
-        | Column      | Description                                        |
-        |-------------|----------------------------------------------------|
-        | Id          | identifier of the category                         |
-        | Name        | name of the category                               |
+| Column      | Description                                        |
+|-------------|----------------------------------------------------|
+| Id          | identifier of the category                         |
+| Name        | name of the category                               |
     4. Purchase (record of a purchase made by a user for one or more items):
-	    | Column      | Description                                        |
-        |-------------|----------------------------------------------------|
-        | Id          | identifier of the item                             |
-        | UserId      | identifier of the user that made the purchase      |
-        | Date        | date the purchase was made                         |
-        | IsReturn    | whether it was a return (unused at the moment)     |
+| Column      | Description                                        |
+|-------------|----------------------------------------------------|
+| Id          | identifier of the item                             |
+| UserId      | identifier of the user that made the purchase      |
+| Date        | date the purchase was made                         |
+| IsReturn    | whether it was a return (unused at the moment)     |
     5. PurchaseItem (one of the items in a completed purchase):
-        | Column      | Description                                        |
-        |-------------|----------------------------------------------------|
-        | Id          | identifier of the purchased item incident          |
-        | PurchaseId  | identifier of the purchase record                  |
-        | ItemId      | identifier of the item that was purchased          |
-        | Quantity    | quantity of item that was purchased                |
-        | UnitPrice   | price of the purchase item at the time of purchase |
+| Column      | Description                                        |
+|-------------|----------------------------------------------------|
+| Id          | identifier of the purchased item incident          |
+| PurchaseId  | identifier of the purchase record                  |
+| ItemId      | identifier of the item that was purchased          |
+| Quantity    | quantity of item that was purchased                |
+| UnitPrice   | price of the purchase item at the time of purchase |
     6. PriceOverride (unused at the moment - allows overriding an item's price for a given time, e.g. during a sale):
-        | Column      | Description                                        |
-        |-------------|----------------------------------------------------|
-        | ItemId      | identifier of the item to override price for       |
-        | Price       | effective price during override period             |
-        | StartDate   | start date of the effective period                 |
-        | EndDate     | end date of the effective period                   |
-2. **Data Transfer Objects (DTOs)**: the API does not serve entities directly, rather it serves consice data transfer objects in json format taylored for effective API communication:
-    1. ItemDto:
-        string **Href**, e.g. "http://localhost/gr/api/items/b5739fdf-7f90-4ca3-815a-d9717de973a3"
-        Guid **Id**, e.g. b5739fdf-7f90-4ca3-815a-d9717de973a3
-        string **Name**, e.g. Dining Table
-        string **Description**, e.g. Elegant solid wood dining table with six chairs
-        decimal **Price**, e.g. $450
-        int **Stock**, e.g. 15
-        CategoryDto **Category**, see CategoryDto
-    2. CategoryDto:
-        string **Href**, e.g. "http://localhost/gr/api/categories/b5739fdf-7f90-4ca3-815a-d9717de973a3/items"
-        Guid **CategoryId**, e.g. b5739fdf-7f90-4ca3-815a-d9717de973a3
-        string **Name**, e.g. Furniture
-    3. PurchaseDto:
-        string **Href**, e.g. "http://localhost/gr/api/purchases/b5739fdf-7f90-4ca3-815a-d9717de973a3"
-        Guid **Id**, e.g. b5739fdf-7f90-4ca3-815a-d9717de973a3
-        DateTime **Date**, e.g. 6/15/2008 9:15 PM
-        bool **IsReturn**, e.g. False
-        IEnumerable<PurchasedItemDto> **PurchasedItems**, see PurchasedItemDto
-        decimal **TotalPrice**, e.g. $325
-    4. PurchasedItemDto:
-        string **Href**, e.g. "http://localhost/gr/api/purchases/b5739fdf-7f90-4ca3-815a-d9717de973a3"
-        Guid **PurchaseId**, e.g. b5739fdf-7f90-4ca3-815a-d9717de973a3
-        int **Quantity**, e.g. 10
-        decimal **UnitPrice**, e.g. $55
-        ItemDto **Item**, see ItemDto
+| Column      | Description                                        |
+|-------------|----------------------------------------------------|
+| ItemId      | identifier of the item to override price for       |
+| Price       | effective price during override period             |
+| StartDate   | start date of the effective period                 |
+| EndDate     | end date of the effective period                   |
+
+**Data Transfer Objects (DTOs)**: the API does not serve entities directly, rather it serves consice data transfer objects in json format taylored for effective API communication:
+
+ItemDto:
+        
+1. string **Href**, e.g. "http://localhost/gr/api/items/b5739fdf-7f90-4ca3-815a-d9717de973a3"
+1. Guid **Id**, e.g. b5739fdf-7f90-4ca3-815a-d9717de973a3
+1. string **Name**, e.g. Dining Table
+1. string **Description**, e.g. Elegant solid wood dining table with six chairs
+1. decimal **Price**, e.g. $450
+1. int **Stock**, e.g. 15
+1. CategoryDto **Category**, see CategoryDto
+
+CategoryDto:
+
+1. string **Href**, e.g. "http://localhost/gr/api/categories/b5739fdf-7f90-4ca3-815a-d9717de973a3/items"
+1. Guid **CategoryId**, e.g. b5739fdf-7f90-4ca3-815a-d9717de973a3
+1. string **Name**, e.g. Furniture
+
+PurchaseDto:
+
+1. string **Href**, e.g. "http://localhost/gr/api/purchases/b5739fdf-7f90-4ca3-815a-d9717de973a3"
+1. Guid **Id**, e.g. b5739fdf-7f90-4ca3-815a-d9717de973a3
+1. DateTime **Date**, e.g. 6/15/2008 9:15 PM
+1. bool **IsReturn**, e.g. False
+1. IEnumerable<PurchasedItemDto> **PurchasedItems**, see PurchasedItemDto
+1. decimal **TotalPrice**, e.g. $325
+
+PurchasedItemDto:
+
+1. string **Href**, e.g. "http://localhost/gr/api/purchases/b5739fdf-7f90-4ca3-815a-d9717de973a3"
+1. Guid **PurchaseId**, e.g. b5739fdf-7f90-4ca3-815a-d9717de973a3
+1. int **Quantity**, e.g. 10
+1. decimal **UnitPrice**, e.g. $55
+1. ItemDto **Item**, see ItemDto
 
 ## Endpoints
 | Endpoint                           | Description                                                    |Authenticated Request|
