@@ -3,9 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose", "GildedRose\GildedRose.csproj", "{60A2645B-5F4D-47A1-AD49-FAF658F51388}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.Web.Api", "GildedRose\GildedRose.Web.Api.csproj", "{60A2645B-5F4D-47A1-AD49-FAF658F51388}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.Tests", "GildedRose.Tests\GildedRose.Tests.csproj", "{0415A95F-2A5A-4156-96BE-F4F0522B17B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.Entities", "GildedRose.Entities\GildedRose.Entities.csproj", "{AFEBB53A-2AB8-47E5-BE20-6B54F10EAC85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.EFDataProvider", "GildedRose.EFDataProvider\GildedRose.EFDataProvider.csproj", "{4D23F665-1AF0-43DD-BE6B-940115B26F11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.Logic", "GildedRose.Logic\GildedRose.Logic.csproj", "{E639492F-905D-4512-BAFC-7BEFC8D31A72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.Repositories", "GildedRose.Repositories\GildedRose.Repositories.csproj", "{E96AABC8-CFAA-47B0-BC13-BA6D69811456}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3D85A8AF-FE5E-4E4B-A21B-2213AA983993}"
+	ProjectSection(SolutionItems) = preProject
+		Database Diagram.png = Database Diagram.png
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1747BCA9-6BAC-4C84-8F69-4DAD31C6EA39}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2B7A4B73-F1DA-4803-B414-ACF5CA5DE83D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +39,32 @@ Global
 		{0415A95F-2A5A-4156-96BE-F4F0522B17B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0415A95F-2A5A-4156-96BE-F4F0522B17B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0415A95F-2A5A-4156-96BE-F4F0522B17B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFEBB53A-2AB8-47E5-BE20-6B54F10EAC85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFEBB53A-2AB8-47E5-BE20-6B54F10EAC85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFEBB53A-2AB8-47E5-BE20-6B54F10EAC85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFEBB53A-2AB8-47E5-BE20-6B54F10EAC85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D23F665-1AF0-43DD-BE6B-940115B26F11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D23F665-1AF0-43DD-BE6B-940115B26F11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D23F665-1AF0-43DD-BE6B-940115B26F11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D23F665-1AF0-43DD-BE6B-940115B26F11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E639492F-905D-4512-BAFC-7BEFC8D31A72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E639492F-905D-4512-BAFC-7BEFC8D31A72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E639492F-905D-4512-BAFC-7BEFC8D31A72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E639492F-905D-4512-BAFC-7BEFC8D31A72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E96AABC8-CFAA-47B0-BC13-BA6D69811456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E96AABC8-CFAA-47B0-BC13-BA6D69811456}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E96AABC8-CFAA-47B0-BC13-BA6D69811456}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E96AABC8-CFAA-47B0-BC13-BA6D69811456}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{60A2645B-5F4D-47A1-AD49-FAF658F51388} = {1747BCA9-6BAC-4C84-8F69-4DAD31C6EA39}
+		{0415A95F-2A5A-4156-96BE-F4F0522B17B3} = {2B7A4B73-F1DA-4803-B414-ACF5CA5DE83D}
+		{AFEBB53A-2AB8-47E5-BE20-6B54F10EAC85} = {1747BCA9-6BAC-4C84-8F69-4DAD31C6EA39}
+		{4D23F665-1AF0-43DD-BE6B-940115B26F11} = {1747BCA9-6BAC-4C84-8F69-4DAD31C6EA39}
+		{E639492F-905D-4512-BAFC-7BEFC8D31A72} = {1747BCA9-6BAC-4C84-8F69-4DAD31C6EA39}
+		{E96AABC8-CFAA-47B0-BC13-BA6D69811456} = {1747BCA9-6BAC-4C84-8F69-4DAD31C6EA39}
 	EndGlobalSection
 EndGlobal

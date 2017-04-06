@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Autofac;
+using Autofac.Integration.WebApi;
+using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -11,12 +14,13 @@ namespace GildedRose
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
-        protected void Application_Start()
+        public void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            RouteTable.Routes.IgnoreRoute("{ resource}.axd/{*pathInfo}");
+            RouteTable.Routes.MapMvcAttributeRoutes(); //Enables Attribute Routing
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }

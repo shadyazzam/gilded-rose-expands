@@ -20,14 +20,19 @@ namespace GildedRose.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public ApplicationDbContext(string connectionString)
+            : base(connectionString)
+        {
+        }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
         
-        public static ApplicationDbContext Create()
+        public static ApplicationDbContext Create(string nameOrConnectionString = null)
         {
-            return new ApplicationDbContext();
+            return new ApplicationDbContext(nameOrConnectionString);
         }
     }
 }

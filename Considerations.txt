@@ -1,0 +1,24 @@
+Gilded Rose:
+
+Live count vs count update when something changes:
+I have seen both approaches at my current company and would definitely lean towards the first (calculating totals based on stock transactions).
+If you are only storing a total quantity in a field somewhere, you have no idea how you arrived at that number. There is no transactional history and you can end up with problems.
+The last system I wrote tracks stock by storing each transaction as a record with a positive or negative quantity. I have found it works very well.
+
+I think this is actually a general best-practices question about doing a (relatively) expensive count every time you need a total vs. doing that count every time something changes, then storing the count in a field and reading that field whenever you need a total.
+If I couldn't use transactions, I would go with the live count every time I needed a total. If transactions are available, it would be safe to perform the inventory update operations and the saving of the re-counted total within the same transaction, which would ensure the accuracy of the count (although I'm not sure this would work with multiple users hitting the database).
+But if performance is not really a huge problem (and modern databases are good enough at counting rows that I would rarely even worry about this) I'd just stick with the live count each time.
+
+both are valid, depending on the circumstances. The former is best when the following conditions hold:
+the number of items to sum is relatively small
+there are few or no exceptional cases to consider (returns, adjustments, et al)
+the inventory item quantity is not needed very often
+on the other hand, if you have a large number of items, several exceptional cases, and frequent access, it will be more efficient to maintain the item quantity
+also note that if your system has discrepancies then it has bugs which should be tracked down and eliminated
+i have done systems both ways, and both ways can work just fine - as long as you don't ignore the bugs!
+
+Diagrams!!!
+- Sequence diagram
+- class diagram
+- data model
+
